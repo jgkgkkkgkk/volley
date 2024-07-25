@@ -20,4 +20,7 @@ public class Schedule {
     @Column(name = "time", nullable = false)
     private String time;
 
+    @Column(name = "teacher", nullable = false)
+    private String teacher;
+
 }
