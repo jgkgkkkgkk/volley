@@ -11,7 +11,6 @@ import java.util.List;
 @RequestMapping("/api/schedule")
 public class ScheduleController {
 
-
     @Autowired
     private ScheduleService scheduleService;
 
@@ -23,6 +22,21 @@ public class ScheduleController {
     @GetMapping("/list")
     public List<Schedule> findAllSchedules() {
         return scheduleService.getAllSchedule();
+    }
+
+    @GetMapping("/{id}")
+    public Schedule findScheduleById(@PathVariable Integer id) {
+        return scheduleService.getScheduleById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteScheduleById(@PathVariable Integer id) {
+        scheduleService.deleteScheduleById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Schedule updateScheduleById(@PathVariable Integer id, @RequestBody Schedule schedule) {
+        return scheduleService.updateScheduleById(id, schedule);
     }
 
 }
