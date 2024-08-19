@@ -1,6 +1,5 @@
 package com.volley.service;
 
-import com.volley.entities.Schedule;
 import com.volley.entities.Team;
 import com.volley.exceptions.NotFoundException;
 import com.volley.repo.TeamRepo;
@@ -13,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TeamService {
 
-    private final TeamRepo teamRepo;
+    private TeamRepo teamRepo;
 
     public List<Team> getAllTeams() {
         return teamRepo.findAll();
