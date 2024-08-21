@@ -1,5 +1,6 @@
 package com.volley.controller;
 
+import com.volley.dto.CreateMemberDto;
 import com.volley.entities.Member;
 import com.volley.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class MemberController {
     private MemberService memberService;
 
     @PostMapping("/save")
-    public void insertMember(@RequestBody Member member) {
+    public void insertMember(@RequestBody CreateMemberDto member) {
         memberService.createNewMember(member);
     }
 

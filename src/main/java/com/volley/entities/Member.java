@@ -12,10 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "member")
 public class Member {
-
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,7 +23,9 @@ public class Member {
     private String age;
     @Column(name = "height", nullable = false)
     private int height;
-    @Column(name="email",nullable = false,unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false, insertable = false, updatable = false)
+    private Team team;
 }

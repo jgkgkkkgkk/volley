@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "teams")
+
 public class Team {
 
     @Id
@@ -22,6 +24,12 @@ public class Team {
 
     @Column(name = "age", nullable = false)
     private String age;
+
+
+
+    @OneToMany(mappedBy="team")
+    private Set<Member> member;
+
 
 }
 

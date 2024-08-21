@@ -1,6 +1,8 @@
 package com.volley.service;
 
+import com.volley.dto.CreateMemberDto;
 import com.volley.entities.Member;
+import com.volley.entities.Team;
 import com.volley.exceptions.EmailAlreadyExist;
 import com.volley.repo.MemberRepo;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MemberService {
     private final MemberRepo memberRepo;
+    private final TeamService teamService;
 
         public List<Member> getAllMembers() {
         return memberRepo.findAll();
@@ -20,11 +23,12 @@ public class MemberService {
 
     }
 
-    public void createNewMember(Member member){
-            Optional<Member> dbMember=memberRepo.findByEmail(member.getEmail());
+    public void createNewMember(CreateMemberDto createMemberDto){
+            Optional<Member> dbMember = memberRepo.findByEmail(createMemberDto.getEmail());
         if(dbMember.isPresent()){
-            throw new EmailAlreadyExist("this Email already exist!,Please create new");
+            throw new EmailAlreadyExist("This Email already exist, please create new.");
         }
-        memberRepo.save(member);
+        Team team = teamService.getTeamById(createMemberDto.getTeamId());
+        memberRepo.save(createMemberDto.buildMember(team));
     }
 }
