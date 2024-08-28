@@ -1,5 +1,6 @@
 package com.volley.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,8 @@ public class Member {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
     @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "team_id", nullable = false)
+    // @JsonIgnore is used to ignore the logical property used in serialization and deserialization
+    @JsonIgnore
     private Team team;
 }
