@@ -16,10 +16,10 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "firstName", nullable = false)
-    private String firstName;
-    @Column(name = "lastName", nullable = false)
-    private String lastName;
+    @Column(name = "first_name", nullable = false)
+    private String firstname;
+    @Column(name = "last_name", nullable = false)
+    private String lastname;
     @Column(name = "age", nullable = false)
     private String age;
     @Column(name = "height", nullable = false)

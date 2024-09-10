@@ -28,9 +28,9 @@ public class TeamService {
 
 
     public void deleteTeamById(Integer id) {
-        getTeamById(id);
         teamRepo.deleteById(id);
     }
+
     public Team updateTeamById(Integer id, Team team) {
         getTeamById(id);
         return teamRepo.save(team);

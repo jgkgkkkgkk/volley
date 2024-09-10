@@ -23,12 +23,13 @@ public class TeamController {
         return teamService.getAllTeams();
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTeamById(@PathVariable Integer id) {
-        teamService.deleteTeamById(id);
-    }
     @PutMapping("/{id}")
     public Team updateTeamById(@PathVariable Integer id, @RequestBody Team team) {
         return teamService.updateTeamById(id, team);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTeamById(@PathVariable Integer id) {
+        teamService.deleteTeamById(id);
     }
 }

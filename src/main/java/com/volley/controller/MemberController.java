@@ -1,7 +1,8 @@
 package com.volley.controller;
 
-import com.volley.dto.CreateMemberDto;
+import com.volley.dto.MemberDto;
 import com.volley.entities.Member;
+import com.volley.entities.Team;
 import com.volley.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,25 @@ public class MemberController {
     private MemberService memberService;
 
     @PostMapping("/save")
-    public void insertMember(@RequestBody CreateMemberDto member) {
+    public void insertMember(@RequestBody MemberDto member) {
         memberService.createNewMember(member);
     }
 
 
     @GetMapping("/list")
-    public List<Member> findAllMembers() {
-        return memberService.getAllMembers();
+    public List<MemberDto> findAllMembers() {
+
+        List<Member> memberList = memberService.getAllMembers();
+
+        return memberList.stream().map(o -> (new MemberDto(o.getId(), o.getFirstname(),
+                o.getLastname(), o.getAge(), o.getHeight(),
+                o.getEmail(), o.getTeam().getId()))).toList();
+
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteMemberById(@PathVariable Integer id) {
+        memberService.deleteMemberById(id);
+    }
+
 }
