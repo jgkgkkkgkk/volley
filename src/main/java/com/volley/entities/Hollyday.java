@@ -17,16 +17,17 @@ public class Hollyday {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first-name", nullable = false)
-    private String firstname;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "last-name", nullable = false)
-    private String lastname;
-    @Column(name = "height", nullable = false)
-    private String height;
+    @Column(name = "description", nullable = false)
+    private String description;
+    @Column(name = "date", nullable = false)
+    private String date;
 
-    @Column(name = "age", nullable = false)
-    private String age;
+    @Column(name = "location", nullable = false)
+    private String location;
 
 }
 
+//назввание информация дата место
